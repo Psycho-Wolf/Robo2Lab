@@ -16,8 +16,8 @@ joints = zeros(m,4); % initializes an empty matrix where the joint variables wil
 % and stores the joint variables in the tempVal vector variable. Then is
 % stores each all values in the correct collumn of the ith row.
 
-t0 = rotxDeg(0);
-t180 = rotxDeg(180);
+t0 = rotzDeg(0);
+t180 = rotzDeg(180);
 for i = 1:m
     if check(i) == 3
         tempVal = scaraIK(path(i,:),t180).';
@@ -30,7 +30,7 @@ for i = 1:m
     joints(i,4) = tempVal(4);
 end
 
-f = fopen('Lab2Iordanov.pac','w'); % opens a .pac file for writing
+f = fopen('Lab3Iordanov.pac','w'); % opens a .pac file for writing
 fprintf(f,'''!TITLE "<My Program>"\n'); % prints the header info
 fprintf(f,'PROGRAM Lab2Iordanov\n');% prints the required header info
 fprintf(f,'TAKEARM\n'); % prints the command to take control of the arm
@@ -47,6 +47,12 @@ for j = 1:m
     else
             fprintf(f,'MOVE L, @E (%f,%f,%f,%f), S = 50\n',joints(j,1),joints(j,2),joints(j,3),joints(j,4));
     end
+    fprintf(f,'BUZZER 1000\n'); % Buzzer before Data collection
+    fprintf(f,'SET IO[64]\n'); % prints the command to release control of the arm
+    fprintf(f,'DELAY 200\n'); % prints the command to release control of the arm
+    fprintf(f,'RESET IO[64]\n'); % prints the command to release control of the arm
+    fprintf(f,'BUZZER 100\n'); % prints the command to release control of the arm
+
 end
 
 fprintf(f,'GIVEARM\n'); % prints the command to release control of the arm
