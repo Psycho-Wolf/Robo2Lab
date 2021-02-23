@@ -1,6 +1,8 @@
 clear
 clc
 
+addpath('D:\GitHUB\Robo2Lab\UsefulFNs');
+
 t = rotxDeg(0); % defines arbitrary t value
 load('path.mat') % Loads the preselected points into the matlab workspace
 load('checkT.mat') % loads the prelected movement type into the matlabworkspace
