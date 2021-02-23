@@ -33,27 +33,21 @@ end
 f = fopen('Lab3Iordanov.pac','w'); % opens a .pac file for writing
 fprintf(f,'''!TITLE "<My Program>"\n'); % prints the header info
 fprintf(f,'PROGRAM Lab2Iordanov\n');% prints the required header info
+fprintf(f,'DEFINIT ITT\n');
 fprintf(f,'TAKEARM\n'); % prints the command to take control of the arm
 
 % for loop with if else statements that check the ith value of the
 % checkT.mat file. This allows the code to then write the coordinate as the
 % correctt type of movement (approach, depart, or move). Then is prints the
 % proper command line.
-for j = 1:m
-    if check(j) == 1
-            fprintf(f,'APPROACH P, (%f,%f,%f,%f), , @P 50, S = 50\n',joints(j,1),joints(j,2),joints(j,3),joints(j,4));
-    elseif check(j) == 2
-        fprintf(f,'DEPART L, @P 50 (%f,%f,%f,%f), S = 50\n',joints(j,1),joints(j,2),joints(j,3),joints(j,4));
-    else
-            fprintf(f,'MOVE L, @E (%f,%f,%f,%f), S = 50\n',joints(j,1),joints(j,2),joints(j,3),joints(j,4));
-    end
-    fprintf(f,'BUZZER 1000\n'); % Buzzer before Data collection
-    fprintf(f,'SET IO[64]\n'); % prints the command to release control of the arm
-    fprintf(f,'DELAY 200\n'); % prints the command to release control of the arm
-    fprintf(f,'RESET IO[64]\n'); % prints the command to release control of the arm
-    fprintf(f,'BUZZER 100\n'); % prints the command to release control of the arm
+fprintf(f,'FOR ITT 0 to
+fprintf(f,'MOVE L, @E (%f,%f,%f,%f), S = 50\n',joints(j,1),joints(j,2),joints(j,3),joints(j,4));
+fprintf(f,'BUZZER 1000\n'); % Buzzer before Data collection
+fprintf(f,'SET IO[64]\n'); % prints the command to release control of the arm
+fprintf(f,'DELAY 200\n'); % prints the command to release control of the arm
+fprintf(f,'RESET IO[64]\n'); % prints the command to release control of the arm
+fprintf(f,'BUZZER 100\n'); % prints the command to release control of the arm
 
-end
 
 fprintf(f,'GIVEARM\n'); % prints the command to release control of the arm
 fprintf(f,'END'); % prints the command that ends the PAC program
