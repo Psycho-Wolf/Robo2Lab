@@ -1,16 +1,14 @@
 clear
 clc
 
-data = load('AI.dat');
-% load('finalPoints.mat')
+data = load('AI.dat'); % Loads in the data from the LiDAR
 
-length = length(data);
-height = height(data);
+length = length(data); % Determines column number of the data
+height = height(data); % Determines row number of the data
 
-pointMat = zeros(3,length*16);
+pointMat = zeros(3,length*16); % Initializes an em
 [bbre1,bTe1] = scaraFK([-154.471221,38.942441,180.000000,115.528779]);
 [bbre2,bTe2] = scaraFK([-123.639568,120.409239,200.000000,183.230329]);
-
 
 i = 1;
     for iter = 1:2:32
@@ -24,7 +22,6 @@ i = 1;
             height = 60;
         end    
         for ii = 1:length
-%             pointMat(:,i) = [data(iter,ii)*cosd(data(iter+1,ii)), data(iter,ii)*sind(data(iter+1,ii)), height].';
             temp = [data(iter,ii)*cosd(data(iter+1,ii)), data(iter,ii)*sind(data(iter+1,ii)), height].';
             if (iter <= 16)
                 pointMat(:,i) = bTe1*(rotzDeg(45)*temp+[0;0;-50]) + bbre1.';
