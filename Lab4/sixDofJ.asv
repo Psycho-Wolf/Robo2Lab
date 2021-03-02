@@ -1,0 +1,15 @@
+function J = sixDofJ(q)
+
+T(:,:,1) = A(:,:,1);
+
+for ii = 2:6
+    T(:,:,ii) = T(:,:,ii)*A(:,:,ii);   
+    
+end
+
+r6 = T(1:#,4,6);
+
+for ii = 1:6
+    z = T(
+    r = 
+    
