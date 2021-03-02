@@ -2,6 +2,7 @@ clear
 clc
 
 data = load('AI.dat');
+% load('finalPoints.mat')
 
 length = length(data);
 height = height(data);
@@ -23,6 +24,7 @@ i = 1;
             height = 60;
         end    
         for ii = 1:length
+%             pointMat(:,i) = [data(iter,ii)*cosd(data(iter+1,ii)), data(iter,ii)*sind(data(iter+1,ii)), height].';
             temp = [data(iter,ii)*cosd(data(iter+1,ii)), data(iter,ii)*sind(data(iter+1,ii)), height].';
             if (iter <= 16)
                 pointMat(:,i) = bTe1*(rotzDeg(45)*temp+[0;0;-50]) + bbre1.';
