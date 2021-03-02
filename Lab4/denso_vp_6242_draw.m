@@ -1,4 +1,4 @@
-function rtrn = sawyer_exam_draw(gamma)
+function rtrn = denso_vp_6242_draw(gamma)
 
 theta1 = gamma(1);
 theta2 = gamma(2);
@@ -6,8 +6,7 @@ theta3 = gamma(3);
 theta4 = gamma(4);
 theta5 = gamma(5);
 theta6 = gamma(6);
-theta7 = gamma(7);
-theta8 = gamma(8);
+
 
 h = clf(gcf);
 
