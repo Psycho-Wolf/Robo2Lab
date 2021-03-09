@@ -15,7 +15,7 @@ function J = sixDofJ(q)
 T(:,:,1) = A(:,:,1);
 
 for ii = 2:6
-    T(:,:,ii) = T(:,:,ii)*A(:,:,ii);   
+    T(:,:,ii) = A(:,:,ii-1)*A(:,:,ii);   
     
 end
 
