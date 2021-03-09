@@ -4,7 +4,7 @@ function Jacobian = sixDofJ(q)
     alpha = [pi/2, 0, -pi/2, pi/2, pi/2, 0].';
     a =     [0 210 75 0 0 0].';
    
-    A = zeros(4,4,6);
+%     A = zeros(4,4,6);
     
     for ii = 1:6
         A(:,:,ii) = [   cos(theta(ii)), -sin(theta(ii))*cos(alpha(ii)), sin(theta(ii))*sin(alpha(ii)), a(ii)*cos(theta(ii));
