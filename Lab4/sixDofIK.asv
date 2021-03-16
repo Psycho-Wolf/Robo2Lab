@@ -13,7 +13,7 @@ dT = .005;
 
 ep = [1;1;1];
 eo = ep;
-maxI = 100;
+maxI = 1;
 
 while (ii <= maxI) && (norm(ep) >= .01) && (norm(eo) >= .01)
     [o,R] = sixDofFK(q);
@@ -26,9 +26,9 @@ while (ii <= maxI) && (norm(ep) >= .01) && (norm(eo) >= .01)
     zeta = quatd(2:4);
     
     eo = -etad*zeta + eta*zetad - cross(zetad,zeta);
-    q = quatd+dT*J\K*[ep;eo.'];
+    q = quatd+dT*inv(J)*K*[ep;eo.'];
     
     ii = ii+1;
 end
-    disp(ii);
+    
 end
